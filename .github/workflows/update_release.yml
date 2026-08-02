@@ -29,7 +29,7 @@ jobs:
 
     - name: Checkout repository
       if: ${{ steps.rkd_v_check.outputs.RKD_VERSION }}
-      uses: actions/checkout@v4
+      uses: actions/checkout@v7
       with:
         fetch-depth: 0
 
@@ -60,7 +60,7 @@ jobs:
 
     - name: Commit and push changes
       if: ${{ steps.rkd_v_check.outputs.RKD_VERSION }}
-      uses: EndBug/add-and-commit@v9
+      uses: EndBug/add-and-commit@v10
       with:
         message: "Bump to ${{ steps.rkd_v_check.outputs.RKD_VERSION }} [skip workflow]"
         tag: "${{ steps.rkd_v_check.outputs.RKD_VERSION }}"
