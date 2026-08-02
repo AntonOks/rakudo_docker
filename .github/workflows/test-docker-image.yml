@@ -23,7 +23,7 @@ jobs:
     - uses: actions/checkout@v7
     - id: set-version
       run: |
-        RAKU_VERSION=$(ls -A -d * | egrep '^[0-9]{4}.[0-9]{2}')
+        RAKU_VERSION=$(ls -A -d -- * | egrep '^[0-9]{4}.[0-9]{2}')
         echo "version=$RAKU_VERSION" >> $GITHUB_OUTPUT
         echo "raku version: $RAKU_VERSION"
     - id: set-matrix
