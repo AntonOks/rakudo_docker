@@ -66,4 +66,27 @@ jobs:
         tag: "${{ steps.rkd_v_check.outputs.RKD_VERSION }}"
         push: "true"
         tag_push: '--force'
-        
+
+      - name: Checkout official-images fork
+        if: ${{ steps.commit_repo.outputs.committed == 'true' }}
+        uses: actions/checkout@v7
+        with:
+          repository: https://github.com/docker-library/official-images
+          ref: master
+          token: ${{ secrets.GITHUB_TOKEN }}
+          path: official-images
+          fetch-depth: 0
+
+      - name: Generate library/rakudo-star
+        if: ${{ steps.commit_repo.outputs.committed == 'true' }}
+        working-directory: official-images
+        env:
+          RKD_VERSION: ${{ steps.rkd_v_check.outputs.RKD_VERSION }}
+          GIT_COMMIT: ${{ steps.commit_repo.outputs.commit_long_sha }}
+        run: |
+          envsubst \
+            < "${GITHUB_WORKSPACE}/.github/templates/docker-library_official-images_library_rakudo-star.template" \
+            > library/rakudo-star
+
+          echo "########## library/rakudo-star ##########"
+          cat library/rakudo-star
