@@ -72,7 +72,7 @@ jobs:
       if: ${{ steps.commit_repo.outputs.committed == 'true' }}
       uses: actions/checkout@v7
       with:
-        repository: https://github.com/docker-library/official-images
+        repository: docker-library/official-images
         ref: master
         token: ${{ secrets.GITHUB_TOKEN }}
         path: official-images
