@@ -2,7 +2,7 @@ FROM alpine:latest
 
 RUN addgroup -S raku && adduser -S raku -G raku
 
-ARG rakudo_version=2026.06-01
+ARG rakudo_version=2026.07-01
 ENV rakudo_version=${rakudo_version}
 
 RUN buildDeps=' \
