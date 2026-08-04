@@ -97,7 +97,7 @@ jobs:
       uses: peter-evans/create-pull-request@v8
       with:
         token: ${{ secrets.PAT4OFFICIAL_DOCKER_IMAGES }}
-        # push-to-fork: ${{ github.repository_owner }}/official-images
+        push-to-fork: ${{ github.repository_owner }}/official-images
         path: official-images
         commit-message: "Update Rakudo-Star to ${{ steps.rkd_v_check.outputs.RKD_VERSION }}"
         branch: "update-rakudo-star-${{ steps.rkd_v_check.outputs.RKD_VERSION }}"
