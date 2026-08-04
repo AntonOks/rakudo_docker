@@ -96,7 +96,7 @@ jobs:
       if: ${{ steps.commit_repo.outputs.committed == 'true' }}
       uses: peter-evans/create-pull-request@v7
       with:
-        token: ${{ secrets.DOCKER_LIBRARY_PAT }}
+        token: ${{ secrets.GITHUB_TOKEN }}
         path: official-images
         commit-message: "Update Rakudo-Star to ${{ steps.rkd_v_check.outputs.RKD_VERSION }}"
         branch: "update-rakudo-star-${{ steps.rkd_v_check.outputs.RKD_VERSION }}"
